@@ -1,0 +1,16 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<app-user-list *ngIf="(users | async)?.length else loading" [users]="users | async" (edit)="edit($event)"></app-user-list>
+<button mat-raised-button (click)="create()">Create User</button>
+<ng-template #loading>
+  <mat-card>
+    <mat-card-content>
+      Loading Users..
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+</ng-template>
+<button [routerLink]="['/login']" mat-button>Logout</button>

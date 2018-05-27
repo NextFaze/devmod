@@ -1,0 +1,23 @@
+<mat-card *ngFor="let user of users">
+  <mat-card-header>
+    <mat-card-title>
+
+      {{ user.name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p>
+        {{ user.email }}
+      </p>
+      <p>
+        {{ user.phone }}
+      </p>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugiat magnam accusamus, ipsum reprehenderit ut. Reiciendis
+    voluptate neque, nihil a adipisci laboriosam iste, pariatur incidunt voluptatem deleniti ullam perspiciatis voluptates.
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="edit.emit(user)">Edit</button>
+  </mat-card-actions>
+</mat-card>

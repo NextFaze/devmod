@@ -1,0 +1,190 @@
+$fontFamily: 'Lucida Sans Unicode',
+'Lucida Grande',
+sans-serif;
+$radius: 4px;
+$headerPadding: 1rem;
+$headerBackground: rgba(68, 0, 0, 0.6);
+$buttonBackground: rgba(51, 52, 62, 0.9);
+$buttonActive: rgba(200, 200, 200, 0.751);
+:host {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+  overflow: hidden;
+  padding: 0.2rem;
+  font-size: 12px;
+  font-family: $fontFamily;
+  pointer-events: none;
+  &.hasBackground {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  h2,
+  h3 {
+    background-color: $headerBackground;
+    border-radius: $radius;
+    margin: $headerPadding;
+    padding: $headerPadding;
+  }
+  p {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  pre {
+    background-color: rgba(51, 52, 62, 0.9);
+    color: white;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 1.2em;
+  }
+  * {
+    pointer-events: auto;
+    font-family: $fontFamily;
+  }
+  button {
+    border-radius: $radius;
+  }
+  button:active {
+    background-color: $buttonActive !important;
+  }
+  button.item-method {
+    background-color: $buttonBackground;
+  }
+  button.item-component {
+    background-color: $buttonBackground;
+  }
+}
+
+.dm-builtin {
+  button {
+    width: 100%;
+  }
+}
+
+button.item-component.dm-padding {
+  margin-bottom: 1rem;
+}
+
+.dm-main {
+  flex: 1;
+  overflow: hidden;
+  overflow-y: auto;
+  overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.dm-observables {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex: 1;
+}
+
+.dm-tabs {
+  overflow: hidden;
+  overflow-y: auto;
+  overflow-scrolling: touch;
+  margin-top: 20px;
+}
+
+.dm-menu {
+  display: flex;
+}
+
+h3 {
+  border-bottom: 1px solid white;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+button {
+  &:focus {
+    outline: 0;
+  }
+  &.item {
+    display: block;
+    margin: 2px;
+    padding: 10px 5px 10px 5px;
+    border: none;
+    border-radius: 2px;
+  }
+  &.item-component {
+    width: 150px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    color: white;
+  }
+  &.item-method {
+    color: white;
+    flex: 1;
+    min-height: 50px;
+    max-height: 50px;
+    text-align: left;
+  }
+}
+
+ul,
+li {
+  list-style-type: none;
+  margin: none;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
+@media (max-width: 1000px) {
+  button.item {
+    flex: 1;
+    font-size: 14px;
+  }
+  button.item-component {
+    width: 35vw;
+    max-width: 35vw;
+  }
+}
+
+@media (min-width: 1001px) {
+  button.item {
+    font-size: 14px;
+  }
+  button.item-component {
+    width: 180px;
+    max-width: 180px;
+  }
+}
+
+// CSS only ripple from https://codepen.io/john052/pen/qdRapO
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button:before {
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+button:focus:before {
+  transition: all 0.5s ease-out;
+  opacity: 0;
+  width: 160px;
+  height: 160px;
+  margin-top: -80px;
+  margin-left: -80px;
+}
+
+button:hover {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+}

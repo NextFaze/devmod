@@ -1,0 +1,30 @@
+:host {
+  height: 42px;
+  width: 42px;
+  border: none;
+  display: block;
+  pointer-events: none;
+  position: fixed;
+  visibility: hidden;
+  z-index: 20000;
+  &:focus {
+    outline: 0;
+  }
+  button {
+    margin: 0;
+    padding: 0;
+    height: 42px;
+    width: 42px;
+    z-index: 20000;
+    background-color: #42586d;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 50%;
+    border: 1px solid white;
+    color: #ecedef;
+  }
+  button,
+  /deep/ * {
+    visibility: visible;
+    pointer-events: initial;
+  }
+}

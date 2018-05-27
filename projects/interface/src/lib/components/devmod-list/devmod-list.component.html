@@ -1,0 +1,44 @@
+<h2>Developer Menu</h2>
+
+<div class="dm-menu">
+  <div class="dm-tabs">
+    <button *ngFor="let component of components | async" [class.dm-padding]="component.padding" class="dm-tab item item-component"
+      (click)="setActive(component)">{{component.name}}</button>
+    <button style="margin-top: 1rem;" (click)="setActive()" class="dm-tab item item-component">App Stats</button>
+  </div>
+  <h3 *ngIf="!debug">Debug Mode was NOT enabled correctly.</h3>
+  <div class="dm-main">
+    <ng-container *ngIf="activeComponent">
+      <h3>{{activeComponent.name}}</h3>
+      <div class="dm-builtin">
+        <button *ngIf="activeComponent.type === 'component' && !activeComponent.hideOutline" class="item item-method" (click)="highlight(activeComponent)">
+          Outline Component
+        </button>
+      </div>
+      <p>Hold Alt/Option +Click to customise function call arguments</p>
+      <button *ngFor="let method of activeComponent?.developerMethods" class="item item-method" (click)="runMethod(activeComponent.instance, method, $event)">
+        {{ method.label }}
+      </button>
+
+      <div class="dm-observables">
+        <ng-container *ngFor="let obs of activeComponent.developerObservables">
+          <button class="item item-method" (click)="showObs[obs.key] = !showObs[obs.key]">
+            Toggle {{obs.key}} debug
+          </button>
+          <ng-container *ngIf="showObs[obs.key]">
+            <h3>{{obs.key}} last {{ obs.takeLast }} values:</h3>
+            <div *ngFor="let emission of obs.obs | async">
+              <p>at: {{ emission.at | json }}</p>
+              <pre>{{ emission.value | json }}</pre>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!activeComponent">
+      <h3>Application Statistics</h3>
+      <pre>
+Active Subscriptions: {{ application.activeSubscriptions }}
+      </pre>
+    </ng-container>
+  </div>

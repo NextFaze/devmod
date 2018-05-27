@@ -1,0 +1,13 @@
+<form [formGroup]="form" (submit)="submit($event)">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" formControlName="email" type="email">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Phone" formControlName="phone" type="tel">
+  </mat-form-field>
+  <button mat-raised-button>{{ hasData ? 'Save' : 'Create' }}</button>
+  <button role="button" mat-button (click)="cancel($event)">Cancel</button>
+</form>
