@@ -9,7 +9,7 @@
     "build:all": "ng build core --prod && ng build interface --prod && ng build --prod",
     "test:all": "ng test core --code-coverage --watch=false --browsers ChromeHeadless && ng test interface --code-coverage --watch=false --browsers ChromeHeadless",
     "pretest": "npm run build:all",
-    "test": "ng test:all",
+    "test": "npm run test:all",
     "posttest": "npm run lint",
     "coveralls": "./node_modules/coveralls/bin/coveralls.js < coverage/core/lcov.info && ./node_modules/coveralls/bin/coveralls.js < coverage/interface/lcov.info",
     "lint": "ng lint",

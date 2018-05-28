@@ -4,6 +4,9 @@ Developer decorators for deugging your apps.
 
 Currently supports Angular
 
+[![Build Status](https://travis-ci.org/NextFaze/devmod.svg?branch=master)](https://travis-ci.org/NextFaze/devmod)
+[![Coverage Status](https://coveralls.io/repos/github/NextFaze/devmod/badge.svg?branch=master)](https://coveralls.io/github/NextFaze/devmod?branch=master)
+
 <img src="./docs/demo.gif" alt="Invocation UI for manual entry" width="45%" align="right"/>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
