@@ -1,16 +1,12 @@
 dist: trusty
-sudo: false
+sudo: required
 
 language: node_js
 node_js:
   - "8"
   
 addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+    chrome: stable
 
 cache:
   directories:
@@ -18,13 +14,11 @@ cache:
 
 install:
   - npm install
-
+  
 script:
-  # Use Chromium instead of Chrome.
-  - export CHROME_BIN=chromium-browser
+  - ng lint
   - ng build core --prod
   - ng build interface --prod
   - ng build --prod
-  - xvfb-run -a ng test devmod --code-coverage --watch=false -- --no-sandbox
-  - xvfb-run -a ng test core --code-coverage --watch=false -- --no-sandbox
-  - xvfb-run -a ng test interface --code-coverage --watch=false -- --no-sandbox
+  - ng test core --code-coverage --watch=false --browsers ChromeHeadless
+  - ng test interface --code-coverage --watch=false --browsers ChromeHeadless
