@@ -22,7 +22,6 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
-    "@devmod/core": "file:dist/core",
     "angular2-draggable": "^1.4.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
