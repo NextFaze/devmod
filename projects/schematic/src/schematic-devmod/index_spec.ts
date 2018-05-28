@@ -45,7 +45,8 @@ describe('Component Schematic', () => {
     const tree = schematicRunner.runSchematic(
       'devmod-angular',
       {
-        modulePath: 'projects/bar/src/app/app.module.ts'
+        modulePath: 'projects/bar/src/app/app.module.ts',
+        componentPath: 'projects/bar/src/app/app.component.html'
       },
       appTree
     );

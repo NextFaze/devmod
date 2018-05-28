@@ -8,7 +8,7 @@ import * as ts from 'typescript';
 export function schematicDevmod(options: any): Rule {
   return (tree: Tree, _context: SchematicContext) => {
     tree.create(
-      'src/devmod.config.ts',
+      'projects/bar/src/devmod.config.ts',
       `
 import { production } from './environments/environment';
 import { enableDebugMode } from '@devmod/core';
@@ -28,16 +28,17 @@ export const devmod = _devmod;
     `.trim()
     );
     const modulePath = options.modulePath || `src/app.module.ts`;
+    const componentPath = options.componentPath || 'src/app.component.html';
     const moduleSource = tree.read(modulePath)!.toString('utf-8');
     const sourceFile = ts.createSourceFile(modulePath, moduleSource, ts.ScriptTarget.Latest, true);
     insert(tree, modulePath, [
       // insertImport(sourceFile, modulePath, 'devmod', './devmod.config'),
       ...addImportToModule(sourceFile, modulePath, `devmod`, './devmod.config')
     ]);
-    insert(tree, 'src/app.component.html', [
+    insert(tree, componentPath, [
       new InsertChange(
-        'src/app.component.html',
-        tree.read('src/app.component.html')!.length,
+        componentPath,
+        tree.read(componentPath)!.length,
         `
 <devmod-toggle></devmod-toggle>`
       )
