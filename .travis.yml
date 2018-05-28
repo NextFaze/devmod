@@ -25,6 +25,6 @@ script:
   - ng build core --prod
   - ng build interface --prod
   - ng build --prod
-  - xvfb-run -a ng test devmod --code-coverage --watch=false -- --no-progress
-  - xvfb-run -a ng test core --code-coverage --watch=false -- --no-progress
-  - xvfb-run -a ng test interface --code-coverage --watch=false -- --no-progress
+  - xvfb-run -a ng test devmod --code-coverage --watch=false -- --no-sandbox
+  - xvfb-run -a ng test core --code-coverage --watch=false -- --no-sandbox
+  - xvfb-run -a ng test interface --code-coverage --watch=false -- --no-sandbox
