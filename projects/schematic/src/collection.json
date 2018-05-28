@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "devmod-angular": {
+      "description": "Add DevMod developer module to an Angular app",
+      "factory": "./schematic-devmod/index#schematicDevmod"
+    }
+  }
+}
