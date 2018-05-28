@@ -22,9 +22,9 @@ install:
 script:
   # Use Chromium instead of Chrome.
   - export CHROME_BIN=chromium-browser
-  - xvfb-run -a npm run test -- demo --single-run --no-progress --browser=ChromeNoSandbox
-  - xvfb-run -a npm run test -- core --single-run --no-progress --browser=ChromeNoSandbox
-  - xvfb-run -a npm run test -- interface --single-run --no-progress --browser=ChromeNoSandbox
   - ng build core --prod
   - ng build interface --prod
   - ng build --prod
+  - xvfb-run -a npm run test -- devmod --single-run --no-progress --browser=ChromeNoSandbox
+  - xvfb-run -a npm run test -- core --single-run --no-progress --browser=ChromeNoSandbox
+  - xvfb-run -a npm run test -- interface --single-run --no-progress --browser=ChromeNoSandbox
