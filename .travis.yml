@@ -14,11 +14,6 @@ cache:
 
 install:
   - npm install
-  
-script:
-  - ng lint
-  - ng build core --prod
-  - ng build interface --prod
-  - ng build --prod
-  - ng test core --code-coverage --watch=false --browsers ChromeHeadless
-  - ng test interface --code-coverage --watch=false --browsers ChromeHeadless
+
+after_success:
+  - npm run coveralls
