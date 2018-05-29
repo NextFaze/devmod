@@ -11,7 +11,7 @@
     "pretest": "npm run build:all",
     "test": "npm run test:all",
     "posttest": "npm run lint",
-    "coveralls": "./node_modules/coveralls/bin/coveralls.js < coverage/core/lcov.info && ./node_modules/coveralls/bin/coveralls.js < coverage/interface/lcov.info && ./node_modules/coveralls/bin/coveralls.js < coverage/schematic/lcov.info",
+    "coveralls": "cat coverage/core/lcov.info coverage/interface/lcov.info coverage/schematic/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
