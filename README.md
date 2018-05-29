@@ -69,8 +69,9 @@ If you're interested in how the module works you can check out [this Medium arti
 
 1.  `npm i @devmod/schematic`;
 1.  `ng generate @devmod/schematic:devmod-angular`
+1.  `npm install` to install devmod dependencies
 
-This will create the required `devmod.config.ts` file, add devmod to your package.json and update the required module and component files as needed.
+This will create the required `devmod.config.ts` file, add devmod packages to your package.json and update the required module and component files as needed.
 
 ### Manual installation
 
