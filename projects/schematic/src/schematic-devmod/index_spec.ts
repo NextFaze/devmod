@@ -42,16 +42,9 @@ describe('Component Schematic', () => {
       '@devmod/schematics',
       path.join(__dirname, '../collection.json')
     );
-    const tree = schematicRunner.runSchematic(
-      'devmod-angular',
-      {
-        modulePath: 'projects/bar/src/app/app.module.ts',
-        componentPath: 'projects/bar/src/app/app.component.html'
-      },
-      appTree
-    );
+    const tree = schematicRunner.runSchematic('devmod-angular', {}, appTree);
     const files = tree.files;
-    expect(files.indexOf('/projects/bar/src/devmod.config.ts')).toBeGreaterThanOrEqual(0);
+    expect(files.indexOf('/projects/bar/src/app/devmod.config.ts')).toBeGreaterThanOrEqual(0);
     const moduleContent = tree.readContent('/projects/bar/src/app/app.module.ts');
     expect(moduleContent).toMatch(/import.*devmod.*from '.\/devmod.config'/);
     expect(moduleContent).toMatch(/imports:\s*\[[^\]]+?,\r?\n\s+devmod\r?\n/m);
