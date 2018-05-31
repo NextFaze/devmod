@@ -1,7 +1,7 @@
 {
   "name": "@devmod/schematic",
   "version": "0.0.1",
-  "description": "A blank schematics",
+  "description": "Add @devmod/core and @devmod/interface to your angular project",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js"
