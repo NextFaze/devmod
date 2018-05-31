@@ -13,19 +13,22 @@ Currently supports Angular
 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-* [Features](#features)
-* [About](#about)
-* [Installation](#installation)
-  * [Install the dependencies](#install-the-dependencies)
-  * [Setting up your environment](#setting-up-your-environment)
-  * [Enabling debug mode](#enabling-debug-mode)
-  * [Import in the interface module](#import-in-the-interface-module)
-  * [Add in the toggle](#add-in-the-toggle)
-  * [Setting up your Developer Functions](#setting-up-your-developer-functions)
-* [Demo and Developing](#demo-and-developing)
-* [Contributing](#contributing)
-  * [Other (Non Angular) Libraries](#other-non-angular-libraries)
-* [License](#license)
+* [DevMod Developer {Mod}ule](#devmod-developer-module)
+  * [Features](#features)
+  * [About](#about)
+  * [Installation](#installation)
+    * [Using the Angular CLI schematic (beta):](#install-using-the-angular-cli-schematic-beta)
+    * [Manual installation](#manual-installation)
+      * [Install the dependencies](#install-the-dependencies)
+      * [Setting up your environment](#setting-up-your-environment)
+      * [Enabling debug mode](#enabling-debug-mode)
+      * [Import in the interface module](#import-in-the-interface-module)
+      * [Add in the toggle](#add-in-the-toggle)
+      * [Setting up your Developer Functions](#setting-up-your-developer-functions)
+  * [Demo and Developing](#demo-and-developing)
+  * [Contributing](#contributing)
+    * [Other (Non Angular) Libraries](#other-non-angular-libraries)
+  * [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -62,9 +65,17 @@ If you're interested in how the module works you can check out [this Medium arti
 
 ## Installation
 
-(Quickest way is probably to have a look at the demo app)
+### Using the Angular CLI schematic (beta):
 
-### Install the dependencies
+1.  `npm i @devmod/schematic`;
+1.  `ng generate @devmod/schematic:devmod-angular`
+1.  `npm install` to install devmod dependencies
+
+This will create the required `devmod.config.ts` file, add devmod packages to your package.json and update the required module and component files as needed.
+
+### Manual installation
+
+#### Install the dependencies
 
 `npm i --save @devmod/{core,interface}`
 
@@ -72,7 +83,7 @@ The interface also relies on Angular CDK for the modal so that also needs to be 
 
 `npm i --save @angular/cdk`
 
-### Setting up your environment
+#### Setting up your environment
 
 In order for tree shaking to work properly - you will want your `production` argument to be exported as a static boolean rather than part of an object - so update your `environment.prod.ts` file as follows (and others as required)
 
@@ -83,7 +94,7 @@ export const environment = {
 };
 ```
 
-### Enabling debug mode
+#### Enabling debug mode
 
 Create a new `devmod.config.ts` file with the following config
 
@@ -103,7 +114,7 @@ import './devmod.config'; // Must be first!
 // ... remaining imports
 ```
 
-### Import in the interface module
+#### Import in the interface module
 
 We provide a non-functional standin Module when running in production mode. In your `app.module.ts` import both, and select the module to use based on the `production` variable.
 
@@ -134,7 +145,7 @@ Once you have the devmod module ready to go, import it as part of your app boots
 export class AppModule {}
 ```
 
-### Add in the toggle
+#### Add in the toggle
 
 The toggle gives you a Floating Action Button on top of your app.
 
@@ -145,7 +156,7 @@ Update your `app.component.html`
 <devmod-toggle></devmod-toggle>
 ```
 
-### Setting up your Developer Functions
+#### Setting up your Developer Functions
 
 In your `app.component.ts` (or any component you like, really)
 
