@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { isDebugMode } from '../util/enable';
+import { makeDeveloperAnnotation } from './make-developer-annotation';
 
 export const OBSERVABLE_KEY = 'DEBUG_OBSERVABLES';
 export interface DebugObservableConfig {
@@ -12,12 +13,9 @@ export interface DebugObservableConfig {
   logSubscriptions?: boolean;
 }
 
-export function DebugObservable(config: any = {}) {
-  return function(target: Object, key: string) {
-    if (!isDebugMode()) {
-      return;
-    }
-
+export const DebugObservable = makeDeveloperAnnotation<DebugObservableConfig>(
+  OBSERVABLE_KEY,
+  (config, target, key) => {
     const takeLast = config.takeLast || 5;
     const label = config.label || key;
     const metaTarget = target.constructor;
@@ -77,7 +75,6 @@ export function DebugObservable(config: any = {}) {
     });
 
     debugObservables.push({ key, obs: valueHistory, takeLast, label });
-
-    defineMetadata(OBSERVABLE_KEY, debugObservables, metaTarget);
-  };
-}
+    return debugObservables;
+  }
+);
