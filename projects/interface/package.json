@@ -1,7 +1,7 @@
 {
   "name": "@devmod/interface",
   "description": "Interface for developing angular applications",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/nextfaze/devmod",
   "issues": "https://github.com/nextfaze/devmod/issues",
   "repository": {
