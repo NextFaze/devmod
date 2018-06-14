@@ -2,9 +2,9 @@
 
 ## @devmod/core
 
-<a name="0.0.3"></a>
+<a name="0.0.4"></a>
 
-#### [0.0.3]
+#### [0.0.4]
 
 Allow angular 5.x.x to stop peer invalid errors in npm on Angular 5 projects
 
@@ -16,9 +16,9 @@ Initial public release
 
 ## @devmod/interface
 
-<a name="0.0.3"></a>
+<a name="0.0.4"></a>
 
-#### [0.0.3]
+#### [0.0.4]
 
 Allow angular 5.x.x to stop peer invalid errors in npm on Angular 5 projects
 

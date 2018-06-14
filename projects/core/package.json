@@ -1,7 +1,7 @@
 {
   "name": "@devmod/core",
   "description": "Developer decorators for building debugging interfaces",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/nextfaze/devmod",
   "issues": "https://github.com/nextfaze/devmod/issues",
   "repository": {
