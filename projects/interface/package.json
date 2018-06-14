@@ -1,7 +1,7 @@
 {
   "name": "@devmod/interface",
   "description": "Interface for developing angular applications",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/nextfaze/devmod",
   "issues": "https://github.com/nextfaze/devmod/issues",
   "repository": {
@@ -13,8 +13,8 @@
   },
   "peerDependencies": {
     "@devmod/core": "^0.0.1",
-    "@angular/cdk": "^6.0.0",
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+    "@angular/cdk": "^6.0.0 || ^5.0.0",
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0 || ^5.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0 || ^5.0.0"
   }
 }
