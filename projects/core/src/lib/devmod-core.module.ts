@@ -10,16 +10,13 @@ import {
   resolveNgModuleDecoratorConfig
 } from './util/angular';
 
-const globalScope: any = (() => {
-  try {
-    return window;
-  } catch (ex) {
-    // NativeScript or some other non-browser environment
-    return global;
-  }
-})();
-
 export function factory() {
+  let globalScope: any;
+  try {
+    globalScope = window;
+  } catch (ex) {
+    globalScope = global;
+  }
   // Lazy load these in a factory so that angular has a chance to bootstrap
   return {
     getAllAngularRootElements: globalScope.getAllAngularRootElements,
