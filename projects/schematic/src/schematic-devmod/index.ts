@@ -1,7 +1,8 @@
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { addImportToModule } from '@schematics/angular/utility/ast-utils';
 import { Change, InsertChange, NoopChange, RemoveChange } from '@schematics/angular/utility/change';
-import { getWorkspace, WorkspaceProject } from '@schematics/angular/utility/config';
+import { getWorkspace } from '@schematics/angular/utility/config';
+import { WorkspaceProject, ProjectType } from '@schematics/angular/utility/workspace-models';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import * as ts from 'typescript';
 
@@ -54,9 +55,9 @@ export function addModuleImportToRootModule(
   host: Tree,
   moduleName: string,
   src: string,
-  project: WorkspaceProject
+  project: WorkspaceProject<ProjectType>
 ) {
-  const modulePath = getRootModulePath(host, project);
+  const modulePath = getAppModulePath(host,  (project as any).architect.build.options.main);
   const moduleSource = host.read(modulePath)!.toString('utf-8');
   const sourceFile = ts.createSourceFile(modulePath, moduleSource, ts.ScriptTarget.Latest, true);
   const changes = addImportToModule(sourceFile, modulePath, moduleName, src);
@@ -71,8 +72,8 @@ export function addModuleImportToRootModule(
   host.commitUpdate(recorder);
 }
 
-export function getRootModulePath(host: Tree, project: WorkspaceProject) {
-  return getAppModulePath(host, project.architect!.build.options.main);
+export function getRootModulePath(host: Tree, project: WorkspaceProject<ProjectType>) {
+  return getAppModulePath(host, (project as any).architect.build.options.main);
 }
 
 export function addPackageToPackageJson(
@@ -106,17 +107,17 @@ export function devmodToggle() {
 
 export function devmodContents() {
   return `
-import { production } from '../environments/environment';
+import { environment } from '../environments/environment';
 import { enableDebugMode } from '@devmod/core';
 import { DevmodInterfaceModule, DevmodNoopModule } from '@devmod/interface';
 
-if (!production) {
+if (!environment.production) {
   enableDebugMode(); // Ensures all the decorators do what they should
 }
 
 let _devmod = DevmodNoopModule;
 
-if(!production) {
+if(!environment.production) {
   _devmod = DevmodInterfaceModule;
 }
 
