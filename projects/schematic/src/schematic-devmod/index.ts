@@ -107,17 +107,17 @@ export function devmodToggle() {
 
 export function devmodContents() {
   return `
-import { environment } from '../environments/environment';
+import { production } from '../environments/environment';
 import { enableDebugMode } from '@devmod/core';
 import { DevmodInterfaceModule, DevmodNoopModule } from '@devmod/interface';
 
-if (!environment.production) {
+if (!production) {
   enableDebugMode(); // Ensures all the decorators do what they should
 }
 
 let _devmod = DevmodNoopModule;
 
-if(!environment.production) {
+if(!production) {
   _devmod = DevmodInterfaceModule;
 }
 
