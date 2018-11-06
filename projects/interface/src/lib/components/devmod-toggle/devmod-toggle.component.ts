@@ -13,6 +13,8 @@ import { isDebugMode } from '@devmod/core';
 import { BuiltinTools } from '../../services/builtin-tools/builtin-tools.service';
 import { DevmodModal } from '../../util/consts';
 
+const TILDE = 192;
+
 @Component({
   selector: 'devmod-toggle',
   templateUrl: './devmod-toggle.component.html',
@@ -135,7 +137,7 @@ export class DevmodToggleComponent implements OnInit {
       window.addEventListener('keyup', e => {
         const target = e.target;
         const nodeName = ((target && (<any>target).nodeName) || '').toLowerCase();
-        if (e.key === '`' && !nodeName.includes('input')) {
+        if (e.keyCode === TILDE && !nodeName.includes('input')) {
           this.toggleClicked();
         }
       });
