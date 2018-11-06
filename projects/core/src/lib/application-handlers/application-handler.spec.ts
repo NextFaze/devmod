@@ -18,9 +18,13 @@ class TestHandler extends ApplicationHandler {
 
 describe('Abstract Application Handler', () => {
   const handler = new TestHandler({});
-  it('should return modules that were registered with @DeveloperModule', () => {
-    enableDebugMode();
 
+  beforeAll(() => {
+    // enable debug mode to enable developer functions
+    enableDebugMode();
+  });
+
+  it('should return modules that were registered with @DeveloperModule', () => {
     @DeveloperModule()
     class SomeClass {
       @DeveloperFunction()
