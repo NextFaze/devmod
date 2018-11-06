@@ -3,6 +3,10 @@ import { of } from 'rxjs';
 import { patches } from './patches';
 
 describe('Monkey Patches', () => {
+  beforeAll(() => {
+    patches.subscriptions = 0;
+  });
+
   it('should monkeypatch subscribe to track subscriber count', () => {
     const prev = patches.subscriptions;
     const sub = of([]).subscribe();
