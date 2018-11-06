@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:all": "ng build core --prod && ng build interface --prod && ng build --prod && tsc -p projects/schematic/tsconfig.json",
-    "test:all": "ng test core --code-coverage --watch=false --browsers ChromeHeadless && ng test interface --code-coverage --watch=false --browsers ChromeHeadless && istanbul cover ./node_modules/.bin/jasmine projects/schematic/**/*_spec.js --dir=coverage/schematic",
+    "test:all": "ng test core --code-coverage --watch=false --browsers ChromeHeadless && ng test interface --code-coverage --watch=false --browsers ChromeHeadless && istanbul cover -i projects/schematic/**/*_spec.js --dir=coverage/schematic ./node_modules/.bin/jasmine",
     "pretest": "npm run build:all",
     "test": "npm run test:all",
     "posttest": "npm run lint",
